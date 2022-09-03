@@ -21,7 +21,7 @@ Note _$NoteFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Note {
   String get content => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -32,7 +32,7 @@ mixin _$Note {
 abstract class $NoteCopyWith<$Res> {
   factory $NoteCopyWith(Note value, $Res Function(Note) then) =
       _$NoteCopyWithImpl<$Res>;
-  $Res call({String content, String id});
+  $Res call({String content, String? id});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$NoteCopyWithImpl<$Res> implements $NoteCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -66,7 +66,7 @@ abstract class _$$_NoteCopyWith<$Res> implements $NoteCopyWith<$Res> {
   factory _$$_NoteCopyWith(_$_Note value, $Res Function(_$_Note) then) =
       __$$_NoteCopyWithImpl<$Res>;
   @override
-  $Res call({String content, String id});
+  $Res call({String content, String? id});
 }
 
 /// @nodoc
@@ -91,7 +91,7 @@ class __$$_NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -99,14 +99,14 @@ class __$$_NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Note implements _Note {
-  const _$_Note({required this.content, required this.id});
+  const _$_Note({required this.content, this.id});
 
   factory _$_Note.fromJson(Map<String, dynamic> json) => _$$_NoteFromJson(json);
 
   @override
   final String content;
   @override
-  final String id;
+  final String? id;
 
   @override
   String toString() {
@@ -143,15 +143,15 @@ class _$_Note implements _Note {
 }
 
 abstract class _Note implements Note {
-  const factory _Note(
-      {required final String content, required final String id}) = _$_Note;
+  const factory _Note({required final String content, final String? id}) =
+      _$_Note;
 
   factory _Note.fromJson(Map<String, dynamic> json) = _$_Note.fromJson;
 
   @override
   String get content;
   @override
-  String get id;
+  String? get id;
   @override
   @JsonKey(ignore: true)
   _$$_NoteCopyWith<_$_Note> get copyWith => throw _privateConstructorUsedError;

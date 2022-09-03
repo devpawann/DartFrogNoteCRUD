@@ -1,13 +1,14 @@
 import 'package:notes_crud/src/models/note.dart';
 import 'package:uuid/uuid.dart';
 
-class NoteDataSource {
-  final notes = <Note>[];
+final notes = <Note>[];
 
+class NoteDataSource {
   Note create(Note note) {
     final id = const Uuid().v4();
     final createdNote = note.copyWith(id: id);
     notes.add(createdNote);
+    print(notes.toString());
     return createdNote;
   }
 
