@@ -18,6 +18,9 @@ Future<Response> onRequest(RequestContext requestContext, String id) async {
     case HttpMethod.post:
       return _update(requestContext, notes);
 
+    case HttpMethod.delete:
+      return _delete(requestContext, notes);
+
     default:
       return Response(statusCode: HttpStatus.methodNotAllowed);
   }
@@ -33,4 +36,9 @@ Future<Response> _update(RequestContext requestContext, Note note) async {
   final newNote = note.copyWith(content: incomingNote.content);
   dataSource.updateNote(newNote);
   return Response.json(body: newNote.toJson());
+}
+
+Future<Response> _delete(RequestContext requestContext, Note note) async {
+  requestContext.read<NoteDataSource>().deleteNote(note);
+  return Response(statusCode: HttpStatus.noContent);
 }
